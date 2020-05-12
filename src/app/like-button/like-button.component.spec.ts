@@ -5,7 +5,7 @@ import { LikeButtonComponent } from './like-button.component';
 describe('LikeButtonComponent', () => {
   let component: LikeButtonComponent;
   let fixture: ComponentFixture<LikeButtonComponent>;
-  let view = fixture.nativeElement;
+  let view: any;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -16,6 +16,7 @@ describe('LikeButtonComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LikeButtonComponent);
+    view = fixture.nativeElement;
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -25,12 +26,12 @@ describe('LikeButtonComponent', () => {
   });
 
   it('Should be 0 like by default', () => {
-    expect(view.innerHTML).toContain('O like');
+    expect(view.getElementsByTagName('likeButton').innerText === '0 like');
   })
 
   it('Should display 1 like when giving 1 like', () => {
     component.initialLikes = 1;
     fixture.detectChanges();
-    expect(view.innerHTML).toContain('1 like');
+    expect(view.getElementsByTagName('likeButton').innerText === '1 like');
   })
 });
