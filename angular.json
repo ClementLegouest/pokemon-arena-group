@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "pokemon-arena"
+    }
+  },
+  "defaultProject": "pokemon-arena",
+  "cli": {
+    "analytics": false
+  }
 }
