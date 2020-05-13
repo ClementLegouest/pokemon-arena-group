@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Pokemon } from './pokemon.model';
+import { Pokemon } from './models/pokemon.model';
 
 @Component({
   selector: 'app-root',
@@ -7,15 +7,23 @@ import { Pokemon } from './pokemon.model';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
   title = 'pokemon-arena';
-  ratata: Pokemon = new Pokemon('ratata', 100, 20, 20);
-  pika: Pokemon = new Pokemon('pika', 100, 20, 20);
-  pikaInfo = this.pika.showPokemon();
-  ratataInfo = this.ratata.showPokemon();
+  pokemons: Pokemon[] = [];
+  ratata: Pokemon = null;
+  pika: Pokemon = null;
+  pikaInfo: string = null;
+  ratataInfo: string = null;
   round = 'Round 1';
   tourDe = 'ratata';
   messages = '';
+
   constructor() {
+
+    this.ratata = new Pokemon('ratata', 100, 20, 20);
+    this.pika = new Pokemon('pika', 100, 20, 20);
+    this.pikaInfo = this.pika.showPokemon();
+    this.ratataInfo = this.ratata.showPokemon();
 
     setInterval(function() {
 
