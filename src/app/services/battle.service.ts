@@ -23,7 +23,7 @@ export class BattleService {
 
   battle(pokemons: Pokemon[]) {
 
-    this.sortBySpeed(pokemons)
+    this.sortBySpeed(pokemons);
 
     setInterval(function() {
 
