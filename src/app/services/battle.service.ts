@@ -22,5 +22,15 @@ export class BattleService {
   }
 
   battle(pokemons: Pokemon[]) {
+
+    this.sortBySpeed(pokemons)
+
+    setInterval(function() {
+
+      pokemons[0].attackPokemon(pokemons[1]);
+      pokemons[1].attackPokemon(pokemons[0]);
+      this.tourDe = 'ratata';
+
+    }, 3000);
   }
 }
