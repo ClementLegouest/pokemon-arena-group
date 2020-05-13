@@ -21,7 +21,9 @@ describe('Battle', () => {
     fixture.detectChanges();
   });
 
-  it('should create an instance', () => {
-    expect(new Battle(new Pokemon('Salamèche', 39, 65, 52), new Pokemon('Bulbizarre', 45, 45, 49))).toBeTruthy();
+  it('Should return the index of Salamèche', () => {
+    const fixture = TestBed.createComponent(Pokemon);
+    const battle = new Battle(new Pokemon('Salamèche', 39, 65, 52), new Pokemon('Bulbizarre', 45, 45, 49));
+    expect(battle.getInitiative(battle.pokemons)).toEqual(0);
   });
 });
