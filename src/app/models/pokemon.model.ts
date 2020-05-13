@@ -15,7 +15,7 @@ export class Pokemon {
 
     const attacklist = ['simple', 'special'];
     // fais un random entre 0 et 1 pour choisir la case du tableau
-    const typeattack = this.getRandomInt(1);
+    const typeattack = this.getRandomInt(2);
 
     if (attacklist[typeattack] === 'simple') {
       receiver.hp = receiver.hp - this.attack;
@@ -32,6 +32,12 @@ export class Pokemon {
 
     return this.name + ' Point de vie: ' + this.hp + ' speed: ' + this.speed + ' Attack: ' + this.attack;
 
+  }
+
+  isDead() {
+    if (this.hp <= 0) {
+      return true;
+    }
   }
 
   getRandomInt(max) {

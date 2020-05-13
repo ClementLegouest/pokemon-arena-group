@@ -25,14 +25,24 @@ export class AppComponent {
     this.pikaInfo = this.pika.showPokemon();
     this.ratataInfo = this.ratata.showPokemon();
 
-    setInterval(function() {
+    const battle = setInterval(() => {
 
       if (this.tourDe === 'ratata') {
-        this.messages = this.ratata.attackPokemon(this.pika);
-        this.tourDe = 'pika';
+        if (this.ratata.isDead() !== true) {
+          this.messages = this.ratata.attackPokemon(this.pika);
+          this.tourDe = 'pika';
+        } else {
+          this.messages = 'ratata est mort!';
+          clearInterval(battle);
+        }
       } else {
-        this.messages = this.pika.attackPokemon(this.ratata);
-        this.tourDe = 'ratata';
+        if (this.pika.isDead() !== true) {
+          this.messages = this.pika.attackPokemon(this.ratata);
+          this.tourDe = 'ratata';
+        } else {
+          this.messages = 'pika est mort!';
+          clearInterval(battle);
+        }
       }
 
     }, 3000);
