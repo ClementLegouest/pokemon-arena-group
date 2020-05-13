@@ -29,9 +29,7 @@ export class Pokemon {
   }
 
   showPokemon() {
-
-    return this.name + ' Point de vie: ' + this.hp + ' speed: ' + this.speed + ' Attack: ' + this.attack;
-
+    return this.name + '\n' + ' HP : ' + this.hp + '\n' + ' speed: ' + this.speed + '\n' + ' Attack: ' + this.attack;
   }
 
   isDead() {
