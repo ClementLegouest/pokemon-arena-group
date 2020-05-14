@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import { Pokemon } from './models/pokemon.model';
-import {Line} from "tslint/lib/verify/lines";
 import {LogLine} from "./models/log-line.model";
 
 @Component({
@@ -20,7 +19,7 @@ export class AppComponent implements OnInit{
   tourDe = 'ratata';
   messages = '';
   isFighting: boolean = false;
-  logLines: Line[] = [];
+  logLines:  LogLine[] = [];
 
   constructor() {}
 
