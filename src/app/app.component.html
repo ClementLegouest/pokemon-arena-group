@@ -70,7 +70,7 @@
   <!-- Fight logs display -->
   <div class="terminal">
     <li *ngFor="let line of logLines">
-      <ul [ngStyle]="{color: line.color}">{{line.line}}</ul>
+      <ul [ngStyle]="{color: line.color}">{{line.date | date: 'hh:mm:ss'}} : {{line.line}}</ul>
     </li>
   </div>
 
