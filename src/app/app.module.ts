@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LikeButtonComponent } from './like-button/like-button.component';
+import {BattleService} from "./services/battle.service";
 
 @NgModule({
   declarations: [
@@ -14,7 +15,11 @@ import { LikeButtonComponent } from './like-button/like-button.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    BattleService
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }
