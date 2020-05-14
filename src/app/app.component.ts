@@ -41,8 +41,8 @@ export class AppComponent implements OnInit {
     this.isFighting = true;
 
     this.tourDe = this.Round1.sortBySpeed();
-    this.logLines.push(new LogLine('Round ' + this.round, 'white'));
-    this.logLines.push(new LogLine('Le combat commence !' + '\n' + this.tourDe + ' est le plus rapide!', 'white'));
+    this.logLines.push(new LogLine('Round ' + this.round, 'white', new Date()));
+    this.logLines.push(new LogLine('Le combat commence !' + '\n' + this.tourDe + ' est le plus rapide!', 'white', new Date()));
 
 
     const battle = setInterval(() => {
@@ -51,14 +51,14 @@ export class AppComponent implements OnInit {
         if (this.ratata.isDead() !== true) {
 
           this.messages = this.ratata.attackPokemon(this.pika);
-          this.logLines.push(new LogLine(this.messages, 'red'));
+          this.logLines.push(new LogLine(this.messages, 'red', new Date()));
 
           this.pikaInfo = this.pika.showPokemon();
           this.tourDe = 'pika';
         } else {
 
           this.messages = this.ratata.name + ' est mort!';
-          this.logLines.push(new LogLine(this.messages, 'white'));
+          this.logLines.push(new LogLine(this.messages, 'white', new Date()));
 
           clearInterval(battle);
           this.isFighting = false;
@@ -67,14 +67,14 @@ export class AppComponent implements OnInit {
       } else {
         if (this.pika.isDead() !== true) {
           this.messages = this.pika.attackPokemon(this.ratata);
-          this.logLines.push(new LogLine(this.messages, 'yellow'));
+          this.logLines.push(new LogLine(this.messages, 'yellow', new Date()));
 
           this.ratataInfo = this.ratata.showPokemon();
           this.tourDe = 'ratata';
         } else {
 
           this.messages = this.pika.name + ' est mort!';
-          this.logLines.push(new LogLine(this.messages, 'white'));
+          this.logLines.push(new LogLine(this.messages, 'white', new Date()));
 
           clearInterval(battle);
           this.isFighting = false;
