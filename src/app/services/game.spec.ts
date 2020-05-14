@@ -8,7 +8,7 @@ describe('Test game.ts', () => {
 
     test('Game winner', () => {
         const ratata = new Pokemon('ratata', 200, 20, 20);
-        const pika = new Pokemon('pika', 100, 20, 20);
+        const pika = new Pokemon('pika', 0, 20, 20);
         // rounds
         const fight1 = new BattleService(ratata, pika);
         const fight2 = new BattleService(ratata, pika);
