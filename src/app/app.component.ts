@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.ratata = new Pokemon('ratata', 100, 40, 20);
-    this.pika = new Pokemon('pika', 100, 100, 20);
+    this.pika = new Pokemon('pika', 100, 40, 20);
     this.pikaInfo = this.pika.showPokemon();
     this.ratataInfo = this.ratata.showPokemon();
     this.Round1 = new BattleService(this.pika, this.ratata);

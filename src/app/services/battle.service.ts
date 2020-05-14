@@ -21,7 +21,9 @@ export class BattleService {
     if (this.red.speed > this.blue.speed) {
       return this.red.name;
     } else if (this.red.speed === this.blue.speed) {
-      // return pokemon1.name;
+      const aleatoire = [this.red.name, this.blue.name];
+      const nomber = this.getRandomInt(2);
+      return aleatoire[nomber];
     } else {
       return this.blue.name;
     }
@@ -39,4 +41,9 @@ export class BattleService {
 
     }, 3000);
   }
+
+  getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+
 }
