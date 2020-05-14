@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Pokemon } from './models/pokemon.model';
 import { LogLine } from "./models/log-line.model";
 import { BattleService } from './services/battle.service';
+import { PokemonService } from './services/pokemon.service';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,7 @@ export class AppComponent implements OnInit {
   pika: Pokemon = null;
   pikaInfo: string = null;
   ratataInfo: string = null;
-  round = 'Round 1';
+  round: number = 1;
   tourDe = '';
   messages = '';
   isFighting = false;
@@ -25,22 +26,33 @@ export class AppComponent implements OnInit {
   Round3: BattleService = null;
   logLines: LogLine[] = [];
 
-  constructor() {}
+  constructor(public pokemonService: PokemonService) {
+
+  }
 
   ngOnInit(): void {
     this.ratata = new Pokemon('ratata', 100, 40, 20);
-    this.pika = new Pokemon('pika', 100, 40, 20);
+    this.pika = new Pokemon('pikachu', 100, 40, 20);
     this.pikaInfo = this.pika.showPokemon();
     this.ratataInfo = this.ratata.showPokemon();
     this.Round1 = new BattleService(this.pika, this.ratata);
   }
 
   startBattle() {
+
+    this.pokemonService.getPokemonByNameFromApi(this.pika).subscribe(pokemon => {
+
+      console.log(pokemon);
+
+    });
+
+    this.ratata = new Pokemon('ratata', 100, 40, 20);
+    this.pika = new Pokemon('pika', 100, 40, 20);
     this.isFighting = true;
 
     this.tourDe = this.Round1.sortBySpeed();
-    this.messages = 'Le combat commence !' + '\n' + this.tourDe + ' est le plus rapide! ';
-    this.logLines.push(new LogLine(this.messages, 'white'));
+    this.logLines.push(new LogLine('Round ' + this.round, 'white'));
+    this.logLines.push(new LogLine('Le combat commence !' + '\n' + this.tourDe + ' est le plus rapide!', 'white'));
 
 
     const battle = setInterval(() => {
@@ -60,6 +72,7 @@ export class AppComponent implements OnInit {
 
           clearInterval(battle);
           this.isFighting = false;
+          this.round++;
         }
       } else {
         if (this.pika.isDead() !== true) {
@@ -75,9 +88,10 @@ export class AppComponent implements OnInit {
 
           clearInterval(battle);
           this.isFighting = false;
+          this.round++;
         }
       }
 
-    }, 3000);
+    }, 1500);
   }
 }
