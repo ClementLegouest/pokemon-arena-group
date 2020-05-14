@@ -42,6 +42,16 @@ export class BattleService {
     }, 3000);
   }
 
+  fightWinner() {
+    if (this.blue.hp <= 0) {
+      return this.red.name;
+    } else if (this.red.hp <= 0) {
+      return this.blue.name;
+    } else {
+      return 'Combat en cours';
+    }
+  }
+
   getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
