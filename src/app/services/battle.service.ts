@@ -17,13 +17,21 @@ export class BattleService {
     this.pokemons.push(blue);
   }
 
-  sortBySpeed(pokemons: Pokemon[]) {
-    pokemons.sort((a, b) => (a.speed > b.speed) ? 1 : -1);
+  sortBySpeed() {
+    if (this.red.speed > this.blue.speed) {
+      return this.red.name;
+    } else if (this.red.speed === this.blue.speed) {
+      const aleatoire = [this.red.name, this.blue.name];
+      const nomber = this.getRandomInt(2);
+      return aleatoire[nomber];
+    } else {
+      return this.blue.name;
+    }
   }
 
   battle(pokemons: Pokemon[]) {
 
-    this.sortBySpeed(pokemons);
+    // this.sortBySpeed(pokemons);
 
     setInterval(function() {
 
@@ -33,4 +41,9 @@ export class BattleService {
 
     }, 3000);
   }
+
+  getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+
 }

@@ -23,8 +23,8 @@ export class Pokemon {
       receiver.hp = receiver.hp - this.attack * 2;
     }
 
-    return this.name + ' attaque ' + receiver.name + ' avec ' + attacklist[typeattack]
-      + ' , ' + receiver.name + ' a maintenant ' + receiver.hp + ' hp ';
+    return this.name + ' attaque ' + receiver.name + ' avec une attaque ' + attacklist[typeattack]
+      + ', ' + receiver.name + ' a maintenant ' + receiver.hp + ' hp ';
 
   }
 
