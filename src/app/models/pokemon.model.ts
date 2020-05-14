@@ -36,6 +36,7 @@ export class Pokemon {
     if (this.hp <= 0) {
       return true;
     }
+    return false;
   }
 
   getRandomInt(max) {

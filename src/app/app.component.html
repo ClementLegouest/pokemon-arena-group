@@ -38,7 +38,6 @@
 
   </div>
 
-
   <input type="hidden" #selection>
   <br><br><br>
   <div class="card-container">
@@ -58,13 +57,12 @@
   </div>
 
   <!-- Fight logs display -->
-  <div class="terminal" [ngSwitch]="selection.value">
-    <pre *ngFor="let line of logLines">
-      <p [ngStyle]="{color: line.color}">{{line.line}}</p>
-    </pre>
+  <div class="terminal">
+    <li *ngFor="let line of logLines">
+      <ul [ngStyle]="{color: line.color}">{{line.line}}</ul>
+    </li>
   </div>
 
-  <!-- Start battle button -->
   <button class="my-btn"
           [ngClass]="{'btn-success': !isFighting,
           'btn-danger': isFighting}"
