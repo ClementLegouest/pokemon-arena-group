@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   pika: Pokemon = null;
   pikaInfo: string = null;
   ratataInfo: string = null;
-  round = 'Round 1';
+  round: number = 1;
   tourDe = '';
   messages = '';
   isFighting = false;
@@ -36,11 +36,13 @@ export class AppComponent implements OnInit {
   }
 
   startBattle() {
+    this.ratata = new Pokemon('ratata', 100, 40, 20);
+    this.pika = new Pokemon('pika', 100, 40, 20);
     this.isFighting = true;
 
     this.tourDe = this.Round1.sortBySpeed();
-    this.messages = 'Le combat commence !' + '\n' + this.tourDe + ' est le plus rapide! ';
-    this.logLines.push(new LogLine(this.messages, 'white'));
+    this.logLines.push(new LogLine('Round ' + this.round, 'white'));
+    this.logLines.push(new LogLine('Le combat commence !' + '\n' + this.tourDe + ' est le plus rapide!', 'white'));
 
 
     const battle = setInterval(() => {
@@ -60,6 +62,7 @@ export class AppComponent implements OnInit {
 
           clearInterval(battle);
           this.isFighting = false;
+          this.round++;
         }
       } else {
         if (this.pika.isDead() !== true) {
@@ -75,9 +78,10 @@ export class AppComponent implements OnInit {
 
           clearInterval(battle);
           this.isFighting = false;
+          this.round++;
         }
       }
 
-    }, 3000);
+    }, 1500);
   }
 }
