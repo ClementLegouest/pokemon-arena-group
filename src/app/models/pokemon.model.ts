@@ -18,9 +18,9 @@ export class Pokemon {
     const typeattack = this.getRandomInt(2);
 
     if (attacklist[typeattack] === 'simple') {
-      receiver.hp = receiver.hp - this.attack;
+      receiver.hp = (receiver.hp - this.attack >= 0 ? receiver.hp - this.attack : 0);
     } else {
-      receiver.hp = receiver.hp - this.attack * 2;
+      receiver.hp = (receiver.hp - this.attack * 2 >= 0 ? receiver.hp - this.attack * 2 : 0);
     }
 
     return this.name + ' attaque ' + receiver.name + ' avec une attaque ' + attacklist[typeattack]
