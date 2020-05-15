@@ -30,26 +30,26 @@
 
 <div class="card-container" style="margin: 50px">
   <div class="card" style="height: 100px; width: 250px">
-    <img style="width: 100px" src="https://www.stickpng.com/assets/images/580b57fcd9996e24bc43c325.png">
+    <img style="width: 100px" src="{{blue.sprite}}">
     <div>
-      <p>{{pika.name}}</p>
+      <p>{{blue.name}}</p>
       <div class="progress">
-        <div class="progress-bar bg-success" role="progressbar" style="width: {{pika.hp}}%" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress-bar bg-success" role="progressbar" style="width: {{blue.hp * 100 / blue.maxHp}}%" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
-      <p>Vitesse : {{pika.speed}}</p>
-      <p>Attaque : {{pika.attack}}</p>
+      <p>Vitesse : {{blue.speed}}</p>
+      <p>Attaque : {{blue.attack}}</p>
     </div>
   </div>
 
   <div class="card" style="height: 100px; width: 250px">
-    <img style="width: 100px" src="https://i.dlpng.com/static/png/6720376_preview.png">
+    <img style="width: 100px" src="{{red.sprite}}">
     <div>
-      <p>{{ratata.name}}</p>
+      <p>{{red.name}}</p>
       <div class="progress">
-        <div class="progress-bar bg-success" role="progressbar" style="width: {{ratata.hp}}%" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress-bar bg-success" role="progressbar" style="width: {{red.hp * 100 / red.maxHp}}%" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
-      <p>Vitesse : {{ratata.speed}}</p>
-      <p>Attaque : {{ratata.attack}}</p>
+      <p>Vitesse : {{red.speed}}</p>
+      <p>Attaque : {{red.attack}}</p>
     </div>
   </div>
 </div>
@@ -76,3 +76,5 @@
     <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
   </svg>
 </button>
+
+<button (click)="newBattle()" class="btn">Nouvelle bataille</button>
