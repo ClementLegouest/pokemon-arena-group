@@ -1,15 +1,20 @@
-<a *ngIf="areTwoSelected()" class="btn btn-success" routerLink="/battle">Conbattre</a>
-<div *ngFor="let pokemon of pokemons, let i = index">
-  <div class="card"
-       style="width: 18rem;"
-       [ngClass]="{'bg-success': pokemon.isSelected}"
-       (click)="selectPokemon(pokemon, i)">
-    <img src="{{pokemon.sprite}}" class="card-img-top" alt="{{pokemon.name}}">
-    <div class="card-body">
-      <h5 class="card-title">{{pokemon.name}}</h5>
-      <p class="card-text">Vie : {{pokemon.hp}}</p>
-      <p class="card-text">Attaque : {{pokemon.attack}}</p>
-      <p class="card-text">Vitesse : {{pokemon.speed}}</p>
+<img height="100px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1280px-International_Pok%C3%A9mon_logo.svg.png" class="" alt="">
+<a *ngIf="areTwoSelected()" class="btn btn-lg btn-primary btn-block" routerLink="/battle">Combattre</a>
+
+<div class="container">
+  <div class="row">
+    <div *ngFor="let pokemon of pokemons, let i = index">
+      <div class="card" style="width: 18rem;" [ngClass]="{'bg-success': pokemon.isSelected}"
+        (click)="selectPokemon(pokemon, i)">
+        <img src="{{pokemon.sprite}}" class="card-img-top" alt="{{pokemon.name}}">
+        <div class="card-body">
+          <h5 class="card-title">{{pokemon.name}}</h5>
+          <p class="card-text">Vie : {{pokemon.hp}}</p>
+          <p class="card-text">Attaque : {{pokemon.attack}}</p>
+          <p class="card-text">Vitesse : {{pokemon.speed}}</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
