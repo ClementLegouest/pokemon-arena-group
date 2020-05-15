@@ -2,21 +2,21 @@ import { BattleService } from './battle.service';
 
 
 export class Game {
-    fight1;
-    fight2;
-    fight3;
-    constructor(fight1: BattleService, fight2: BattleService, fight3: BattleService) {
-        this.fight1 = fight1;
-        this.fight2 = fight2;
-        this.fight3 = fight3;
+    round1;
+    round2;
+    round3;
+    constructor(round1: BattleService, round2: BattleService, round3: BattleService) {
+        this.round1 = round1;
+        this.round2 = round2;
+        this.round3 = round3;
     }
 
     gameWinner() {
-        if (this.fight1.fightWinner() === this.fight2.fightWinner() || this.fight2.fightWinner() === this.fight3.fightWinner()
-            || this.fight1.fightWinner() === this.fight3.fightWinner()) {
-            return this.fight1.fightWinner();
+        if (this.round1.fightWinner() === this.round2.fightWinner() || this.round2.fightWinner() === this.round3.fightWinner()
+            || this.round1.fightWinner() === this.round3.fightWinner()) {
+            return this.round1.fightWinner();
         } else {
-            return this.fight2.fightWinner();
+            return this.round2.fightWinner();
         }
     }
 

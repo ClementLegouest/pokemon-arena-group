@@ -3,12 +3,14 @@ export class Pokemon {
   public hp: number;
   public speed: number;
   public attack: number;
+  public isSelected: boolean;
 
   constructor(name: string, hp: number, speed: number, attack: number) {
     this.name = name;
     this.hp = hp;
     this.speed = speed;
     this.attack = attack;
+    this.isSelected = false;
   }
 
   attackPokemon(receiver: Pokemon) {
