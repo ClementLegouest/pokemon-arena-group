@@ -10,6 +10,7 @@ export class PokemonService {
 
   urlApi = 'https://pokeapi.co/api/v2/pokemon/';  // URL de l'API
   pokemons: Pokemon[] = [];
+  selectedPokemons: Pokemon[] = [];
 
   constructor(private http: HttpClient) { }
 
@@ -26,6 +27,22 @@ export class PokemonService {
 
   addOnePokemon(pokemon: Pokemon): void {
     this.pokemons.push(pokemon);
+  }
+
+
+  addOneToSelection(pokemon: Pokemon): void {
+    if ( this.selectedPokemons.length === 2 ) {
+      return;
+    }
+    if ( pokemon.isSelected ) {
+      for ( let i = 0; i <= this.selectedPokemons.length; i++ ) {
+        if ( this.selectedPokemons[i].name === pokemon.name ) {
+          this.selectedPokemons.slice(i, 1);
+        }
+      }
+    } else {
+      this.selectedPokemons.push(pokemon);
+    }
   }
 }
 

@@ -10,14 +10,14 @@ import {BattleService} from "../services/battle.service";
   styleUrls: ['./battle.component.scss']
 })
 export class BattleComponent implements OnInit {
-  private ratata: Pokemon;
-  private pika: Pokemon;
-  private isFighting: boolean;
-  private tourDe: string;
-  private Round1: BattleService;
-  private logLines: LogLine[] = [];
-  private messages: string;
-  private round: number = 1;
+  ratata: Pokemon;
+  pika: Pokemon;
+  isFighting: boolean;
+  tourDe: string;
+  Round1: BattleService;
+  logLines: LogLine[] = [];
+  messages: string;
+  round: number = 1;
 
   constructor(private pokemonService: PokemonService,
               private battleService: BattleService) { }
