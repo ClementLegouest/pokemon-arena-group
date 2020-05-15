@@ -8,12 +8,14 @@ import {BattleService} from './services/battle.service';
 import { PokemonService } from './services/pokemon.service';
 import { HttpClient, HttpParams, HttpClientModule } from '@angular/common/http';
 import { BattleComponent } from './battle/battle.component';
+import { SelectComponent } from './select/select.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LikeButtonComponent,
-    BattleComponent
+    BattleComponent,
+    SelectComponent
   ],
   imports: [
     BrowserModule,
