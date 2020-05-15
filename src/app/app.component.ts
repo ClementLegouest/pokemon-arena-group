@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
     this.pika = new Pokemon('pikachu', 100, 40, 20);
     this.pikaInfo = this.pika.showPokemon();
     this.ratataInfo = this.ratata.showPokemon();
-    this.Round1 = new BattleService();
+    this.Round1 = new BattleService(this.pika, this.ratata);
   }
 
   startBattle() {
@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
     this.pika = new Pokemon('pika', 100, 40, 20);
     this.isFighting = true;
 
-    this.tourDe = this.Round1.sortBySpeed(this.pika, this.ratata);
+    this.tourDe = this.Round1.sortBySpeed();
     this.logLines.push(new LogLine('Round ' + this.round, 'white', new Date()));
     this.logLines.push(new LogLine('Le combat commence !' + '\n' + this.tourDe + ' est le plus rapide!', 'white', new Date()));
 
