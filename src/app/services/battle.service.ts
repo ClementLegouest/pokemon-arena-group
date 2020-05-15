@@ -6,17 +6,26 @@ import { Pokemon } from '../models/pokemon.model';
 })
 export class BattleService {
 
-  constructor() {}
+  pokemons: Pokemon[] = [];
+  red: Pokemon = null;
+  blue: Pokemon = null;
 
-  sortBySpeed(red: Pokemon, blue: Pokemon) {
-    if (red.speed > blue.speed) {
-      return red.name;
-    } else if (red.speed === blue.speed) {
-      const aleatoire = [red.name, blue.name];
+  constructor(red: Pokemon, blue: Pokemon) {
+    this.red = red;
+    this.blue = blue;
+    this.pokemons.push(red);
+    this.pokemons.push(blue);
+  }
+
+  sortBySpeed() {
+    if (this.red.speed > this.blue.speed) {
+      return this.red.name;
+    } else if (this.red.speed === this.blue.speed) {
+      const aleatoire = [this.red.name, this.blue.name];
       const nomber = this.getRandomInt(2);
       return aleatoire[nomber];
     } else {
-      return blue.name;
+      return this.blue.name;
     }
   }
 
@@ -33,11 +42,11 @@ export class BattleService {
     }, 3000);
   }
 
-  fightWinner(red: Pokemon, blue: Pokemon) {
-    if (blue.hp <= 0) {
-      return red.name;
-    } else if (red.hp <= 0) {
-      return blue.name;
+  fightWinner() {
+    if (this.blue.hp <= 0) {
+      return this.red.name;
+    } else if (this.red.hp <= 0) {
+      return this.blue.name;
     } else {
       return 'Combat en cours';
     }
