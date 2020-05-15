@@ -7,11 +7,15 @@ import { LikeButtonComponent } from './like-button/like-button.component';
 import {BattleService} from './services/battle.service';
 import { PokemonService } from './services/pokemon.service';
 import { HttpClient, HttpParams, HttpClientModule } from '@angular/common/http';
+import { BattleComponent } from './battle/battle.component';
+import { StartPageComponent } from './start-page/start-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LikeButtonComponent
+    LikeButtonComponent,
+    BattleComponent,
+    StartPageComponent
   ],
   imports: [
     BrowserModule,

@@ -8,21 +8,24 @@ import { Pokemon } from '../models/pokemon.model';
 @Injectable()
 export class PokemonService {
 
-    urlApi = 'https://pokeapi.co/api/v2/pokemon/';  // URL de l'API
+  urlApi = 'https://pokeapi.co/api/v2/pokemon/';  // URL de l'API
+  pokemons: Pokemon[] = [];
 
-    constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-    getPokemonByNameFromApi(pokemon: Pokemon): Observable<Pokemon> {
 
-        return this.http.get<Pokemon>(this.urlApi + pokemon.name);
+  getPokemonByNameFromApi(pokemon: Pokemon): Observable<Pokemon> {
+    return this.http.get<Pokemon>(this.urlApi + pokemon.name);
+  }
 
-    }
 
-    getPokemonByIdFromApi(pokemonId: number): Observable<Pokemon> {
+  getPokemonByIdFromApi(pokemonId: number): Observable<Pokemon> {
+    return this.http.get<Pokemon>(this.urlApi + pokemonId );
+  }
 
-        return this.http.get<Pokemon>(this.urlApi + pokemonId );
 
-    }
-
+  addOnePokemon(pokemon: Pokemon): void {
+    this.pokemons.push(pokemon);
+  }
 }
 
