@@ -12,19 +12,24 @@ import { Game } from '../services/game';
 })
 export class BattleComponent implements OnInit {
   round: number;
-  pika: Pokemon;
-  ratata: Pokemon;
+  red: Pokemon;
+  blue: Pokemon;
   isFighting: boolean;
   tourDe: string;
   logLines: LogLine[] = [];
   roundWinners = [];
 
-  constructor(private pokemonService: PokemonService, private battleService: BattleService) { }
+  constructor(private pokemonService: PokemonService,
+              private battleService: BattleService,
+              private router: Router) { }
 
   ngOnInit(): void {
+    if ( this.pokemonService.selectedPokemons.length < 2 ) {
+      this.router.navigate(['/select']);
+    }
     this.round = 1;
-    this.ratata = new Pokemon('ratata', 100, 40, 20, 'test');
-    this.pika = new Pokemon('pikachu', 100, 40, 20, 'test');
+    this.red = this.pokemonService.selectedPokemons[0];
+    this.blue = this.pokemonService.selectedPokemons[1];
   }
 
   gameOver(roundwinner: Array<string>): string {
@@ -35,45 +40,41 @@ export class BattleComponent implements OnInit {
   }
 
   startBattle() {
-    this.pokemonService.getPokemonByNameFromApi(this.pika).subscribe(pokemon => {
+    this.pokemonService.getPokemonByNameFromApi(this.blue).subscribe(pokemon => {
       console.log(pokemon);
     });
-    this.ratata = new Pokemon('ratata', 100, 40, 20, 'test');
-    this.pika = new Pokemon('pika', 100, 40, 20, 'test');
     this.isFighting = true;
 
-    this.tourDe = this.battleService.sortBySpeed(this.ratata, this.pika);
+    this.tourDe = this.battleService.sortBySpeed(this.red, this.blue);
     this.logLines.push(new LogLine('Round ' + this.round, 'white', new Date()));
     this.logLines.push(new LogLine('Le combat commence !' + '\n' + this.tourDe + ' est le plus rapide!', 'white', new Date()));
 
 
     const battle = setInterval(() => {
 
-      if (this.tourDe === 'ratata') {
-        if (this.ratata.isDead() !== true) {
+      if (this.tourDe === 'red') {
+        if (this.red.isDead() !== true) {
 
-          this.logLines.push(new LogLine(this.ratata.attackPokemon(this.pika), 'red', new Date()));
+          this.logLines.push(new LogLine(this.red.attackPokemon(this.blue), 'red', new Date()));
 
-          this.tourDe = 'pika';
+          this.tourDe = 'blue';
         } else {
           this.logLines.push(new LogLine(this.ratata.name + ' est KO!', 'white', new Date()));
           this.roundWinners.push(this.pika.name);
           clearInterval(battle);
-          this.isFighting = false;
-          this.round++;
+          this.resetRound();
         }
       } else {
-        if (this.pika.isDead() !== true) {
+        if (this.blue.isDead() !== true) {
 
-          this.logLines.push(new LogLine(this.pika.attackPokemon(this.ratata), 'yellow', new Date()));
+          this.logLines.push(new LogLine(this.blue.attackPokemon(this.red), 'yellow', new Date()));
 
-          this.tourDe = 'ratata';
+          this.tourDe = 'red';
         } else {
           this.logLines.push(new LogLine(this.pika.name + ' est KO!', 'white', new Date()));
           this.roundWinners.push(this.ratata.name);
           clearInterval(battle);
-          this.isFighting = false;
-          this.round++;
+          this.resetRound();
         }
       }
 
@@ -84,5 +85,15 @@ export class BattleComponent implements OnInit {
     }, 1500);
   }
 
+  resetRound() {
+    this.red.hp = this.red.maxHp;
+    this.blue.hp = this.blue.maxHp;
+    this.isFighting = false;
+    this.round++;
+  }
 
+  newBattle(): void {
+    this.pokemonService.resetSelectedPokemons();
+    this.router.navigate(['/select']);
+  }
 }

@@ -71,5 +71,9 @@ export class PokemonService {
       }
     }
   }
+
+  resetSelectedPokemons(): void {
+    this.selectedPokemons = [];
+  }
 }
 

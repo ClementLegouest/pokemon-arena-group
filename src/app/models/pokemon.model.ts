@@ -1,6 +1,7 @@
 export class Pokemon {
   public name: string;
   public hp: number;
+  public maxHp: number;
   public speed: number;
   public attack: number;
   public sprite: string;
@@ -9,6 +10,7 @@ export class Pokemon {
   constructor(name: string, hp: number, speed: number, attack: number, sprite: string) {
     this.name = name;
     this.hp = hp;
+    this.maxHp = hp;
     this.speed = speed;
     this.attack = attack;
     this.sprite = sprite;
@@ -46,5 +48,4 @@ export class Pokemon {
   getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
-
 }
