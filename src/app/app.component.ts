@@ -31,8 +31,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.ratata = new Pokemon('ratata', 100, 40, 20);
-    this.pika = new Pokemon('pikachu', 100, 40, 20);
+    this.ratata = new Pokemon('ratata', 100, 40, 20, 'test');
+    this.pika = new Pokemon('pikachu', 100, 40, 20, 'test');
     this.pikaInfo = this.pika.showPokemon();
     this.ratataInfo = this.ratata.showPokemon();
     this.Round1 = new BattleService(this.pika, this.ratata);
@@ -42,8 +42,8 @@ export class AppComponent implements OnInit {
     this.pokemonService.getPokemonByNameFromApi(this.pika).subscribe(pokemon => {
       console.log(pokemon);
     });
-    this.ratata = new Pokemon('ratata', 100, 40, 20);
-    this.pika = new Pokemon('pika', 100, 40, 20);
+    this.ratata = new Pokemon('ratata', 100, 40, 20,'test');
+    this.pika = new Pokemon('pika', 100, 40, 20, 'test');
     this.isFighting = true;
 
     this.tourDe = this.Round1.sortBySpeed();
